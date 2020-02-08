@@ -4,6 +4,7 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'carouselView.dart';
 
 void main() => runApp(MyApp());
 
@@ -187,15 +188,16 @@ class DetailScreen extends StatefulWidget {
                 initialPage: 0,
                 enlargeCenterPage: true,
                 autoPlay: true,
-                reverse: true,
-                autoPlayInterval: Duration(seconds: 2),
+                // reverse: true,
+                autoPlayInterval: Duration(seconds: 5),
                 autoPlayAnimationDuration: Duration(milliseconds: 800),
                 onPageChanged: (index) {
                   setState(() {
                     _current = index;
                   });
                 },
-                items: imgList.map((a) {
+                items: 
+                imgList.map((a) {
                   return Builder(
                     builder: (BuildContext context) {
                       return Container(
@@ -205,10 +207,15 @@ class DetailScreen extends StatefulWidget {
                           color: Colors.green,
                         ),
                         child:
-                          Image.network(
+                          GestureDetector(
+                            child: Image.network(
                            a,
-                          fit: BoxFit.fill,
-                        ),  
+                          fit: BoxFit.fill,),
+                          onTap: ()
+                          {
+                            Navigator.push(context, MaterialPageRoute(builder: (context) => Show(url:a)));
+                          },   
+                         )  
                       );
                     },
                   );
