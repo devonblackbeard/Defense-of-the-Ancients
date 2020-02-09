@@ -33,12 +33,10 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   //prep carousel
-
-
-
-  List imageDate;
+  
+  List ImageData;
   String urlpath = "https://api.opendota.com/api/heroStats";
-  // Function to get the JSON imageDate
+  // Function to get the JSON ImageData
   Future<String> getJSONData() async {
     var response = await http.get(
         // Encode the url
@@ -47,9 +45,9 @@ class _MyHomePageState extends State<MyHomePage> {
         headers: {"Accept": "application/json"});
 
     setState(() {
-      // Get the JSON imageDate
-      imageDate = json.decode(response.body);
-      print(imageDate);
+      // Get the JSON ImageData
+      ImageData = json.decode(response.body);
+      print(ImageData);
     });
 
     return "Success";
@@ -68,10 +66,10 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget buildListView() {
     return ListView.builder(
         padding: const EdgeInsets.all(0),
-        itemCount: imageDate == null ? 0 : imageDate.length,
+        itemCount: ImageData == null ? 0 : ImageData.length,
         itemBuilder: (context, index) {
-          return buildImageColumn(imageDate[index]);
-          // return _buildRow(imageDate[index]);
+          return buildImageColumn(ImageData[index]);
+          // return _buildRow(ImageData[index]);
         });
   }
 
@@ -145,14 +143,12 @@ class DetailScreen extends StatefulWidget {
 
     final String name;
     final String attackType;
-  
 
   @override
   _DetailScreen createState() => _DetailScreen();
 } 
 
   class _DetailScreen extends State<DetailScreen> {
-  // Declare a field that holds the Todo.
   
   int _current = 0;
     final List imgList = [
@@ -169,15 +165,19 @@ class DetailScreen extends StatefulWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Use the Todo to create the UI.
     return Scaffold(
+      backgroundColor: Colors.pink,
       appBar: AppBar(
+        backgroundColor: Colors.grey,
         title: Text("More info"),
       ),
-      body: Padding(
+      body: 
+      
+        Padding(
           padding: EdgeInsets.all(16.0),
           // child: Text("Name: " + name + " "+ 'attackType'+ "= "+ attackType ) ,
           child: Column(
+            
             //mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
@@ -204,7 +204,7 @@ class DetailScreen extends StatefulWidget {
                         width: MediaQuery.of(context).size.width,
                         margin: EdgeInsets.symmetric(horizontal: 10.0),
                         decoration: BoxDecoration(
-                          color: Colors.green,
+                          color: Colors.black,
                         ),
                         child:
                           GestureDetector(

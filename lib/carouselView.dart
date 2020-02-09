@@ -14,9 +14,12 @@ class _ShowState extends State<Show>{
   Widget build(BuildContext context)
   {
     return new Scaffold(
+      backgroundColor: Colors.lightBlue,
+
       appBar: AppBar(
         title: Text("Image"),
       ),
+        
       body: Image.network(widget.url, width: double.infinity,)
     );
   }
