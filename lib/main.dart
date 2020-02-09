@@ -48,7 +48,7 @@ class _MyHomePageState extends State<MyHomePage> {
       // Get the JSON ImageData
       ImageData = json.decode(response.body);
       print(ImageData);
-    });
+   });
 
     return "Success";
   }
@@ -102,9 +102,16 @@ class _MyHomePageState extends State<MyHomePage> {
           showDialog(
               context: context,
               child: new AlertDialog(
+                titlePadding: new EdgeInsets.symmetric(vertical: 2.0, horizontal: 2),
+                // contentPadding: EdgeInsets.fromLTRB(12,0,32,0),
+                elevation: 50.0,
+                shape: RoundedRectangleBorder(
+                  borderRadius: new BorderRadius.circular(18)
+                ),
+                backgroundColor: Colors.lightGreen,
                 title: new Column(
                   children: <Widget>[
-                    new Text("You clicked:"),
+                    new Text("You clicked:", ),
                   ],
                 ),
                 content: new Text(item['localized_name']),
@@ -148,7 +155,7 @@ class DetailScreen extends StatefulWidget {
   _DetailScreen createState() => _DetailScreen();
 } 
 
-  class _DetailScreen extends State<DetailScreen> {
+class _DetailScreen extends State<DetailScreen> {
   
   int _current = 0;
     final List imgList = [
@@ -162,7 +169,6 @@ class DetailScreen extends StatefulWidget {
     'https://images.unsplash.com/photo-1502943693086-33b5b1cfdf2f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=668&q=80'
   ];
   
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -177,7 +183,6 @@ class DetailScreen extends StatefulWidget {
           padding: EdgeInsets.all(16.0),
           // child: Text("Name: " + name + " "+ 'attackType'+ "= "+ attackType ) ,
           child: Column(
-            
             //mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
@@ -192,9 +197,9 @@ class DetailScreen extends StatefulWidget {
                 autoPlayInterval: Duration(seconds: 5),
                 autoPlayAnimationDuration: Duration(milliseconds: 800),
                 onPageChanged: (index) {
-                  setState(() {
-                    _current = index;
-                  });
+                  // setState(() {
+                  //   _current = index;
+                  // });
                 },
                 items: 
                 imgList.map((a) {
