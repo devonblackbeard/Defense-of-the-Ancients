@@ -1,4 +1,4 @@
-# beasts_app
+# Defense of the Ancients
 
 A new Flutter project.
 
